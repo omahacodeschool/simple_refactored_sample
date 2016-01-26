@@ -2,10 +2,28 @@ require 'test_helper'
 require 'string_segmenter'
 
 class StringSegmenterTest < Minitest::Test
-  # Your test methods go here.
-end
+  def test_ing_words
+  	str = "catrunningtrance"
 
+  	assert_equal(["cat", "running", "trance"], segment_string(str))
+  end
+
+  def test_plural_words
+  	str = "catsrunningtrance"
+
+  	assert_equal(["cats", "running", "trance"], segment_string(str))
+  end
+
+  def test_compoundish_words
+  	str = "publishcatrun"
+
+  	assert_equal(["publish", "cat", "run"], segment_string(str))
+  end
+end
 # Remember, the names of all test methods should begin with "test_".
+
+
+
 
 #1. create a hash to store words
 #2. split string into individual characters
