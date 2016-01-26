@@ -16,8 +16,7 @@ def segment_string(str)
 			arr[-1] << n
 		elsif !valid_word?(n)
 			#go back to the n=n+n(1)
-	end
-		
+		end
 	end
 	return arr
 end
