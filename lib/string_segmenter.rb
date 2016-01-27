@@ -1,6 +1,8 @@
 require 'dictionary.rb'
 
 def segment_string(str)
+	puts "STARTING"
+
 	#create array to store words
 	words = []
 	#create counter variable
@@ -8,21 +10,25 @@ def segment_string(str)
 	n = 0
 	#while the variable is less than or equal to the string length, do the following operation
 	while i <= str.length do 
+		puts "i is currently #{i}"
+		puts "n is currently #{n}"
 		#for each character in the string, do the following
-			#if charcter is not a word
-			if !valid_word?(str.slice(n,i))
-				#add one to the counter variable
-				i += 1
-				#and add the next character to n
-				#if n is a word
-			elsif 
-				valid_word?(str.slice(n,i))
-				#put n into the array
-				words << str.slice(n,i)
-				#then move on the the next character
-				n = i+1
-				i += 1
-			end
+		#if charcter is not a word
+		if !valid_word?(str.slice(n,i))
+			puts "#{str.slice(n,i)} is not a word, so incrementing i."
+			#add one to the counter variable
+			i += 1
+			#if n is a word
+		elsif valid_word?(str.slice(n,i))
+			puts "#{str.slice(n,i)} IS a word! So adding it to 'words'."
+			#put n into the array
+			words << str.slice(n,i)
+			puts "Okay, added it, and 'words' is now #{words}"
+
+			#then move on the the next character
+			n = i
+			i += 1
+		end
 	end
 	return words
 end
