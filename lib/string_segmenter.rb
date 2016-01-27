@@ -1,4 +1,4 @@
-require_relative '../dictionary.rb'
+require 'dictionary'
 
 def segment_string(str)
 	#"catrun" --------
@@ -29,6 +29,8 @@ def segment_string(str)
 			#then move on to the next character
 			first_letter = last_letter + 1
 			last_letter += 1
+
+			#i think i need another or a different condition in this next line
 		elsif !valid_word?(str[first_letter..last_letter]) && words.join.length < str.length
 			puts "#{str[first_letter..last_letter]} is not a word and we're out of letters so lets go back to the beginning of the last word."
 			#next line is me attempting to take the value of the previous last letter and add one to it
