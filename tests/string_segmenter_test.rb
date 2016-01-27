@@ -2,21 +2,27 @@ require 'test_helper'
 require 'string_segmenter'
 
 class StringSegmenterTest < Minitest::Test
-  def test_ing_words
-  	str = "catrunningtrance"
+  # def test_ing_words
+  # 	str = "catrunningtrance"
 
-  	assert_equal(["cat", "running", "trance"], segment_string(str))
-  end
+  # 	assert_equal(["cat", "running", "trance"], segment_string(str))
+  # end
 
-  def test_plural_words
-  	str = "catsrunningtrance"
+  # def test_plural_words
+  # 	str = "catsrunningtrance"
 
-  	assert_equal(["cats", "running", "trance"], segment_string(str))
-  end
+  # 	assert_equal(["cats", "running", "trance"], segment_string(str))
+  # end
 
-  def test_compoundish_words
-  	str = "publishcatrun"
+  # def test_compoundish_words
+  # 	str = "publishcatrun"
 
-  	assert_equal(["publish", "cat", "run"], segment_string(str))
+  # 	assert_equal(["publish", "cat", "run"], segment_string(str))
+  # end
+  
+    def test_simple
+  	str = "catrun"
+
+  	assert_equal(["cat", "run"], segment_string(str))
   end
 end
