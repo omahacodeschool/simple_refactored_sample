@@ -1,29 +1,27 @@
-require_relative '../dictionary.rb'
+require 'dictionary.rb'
 
 def segment_string(str)
 	#create array to store words
 	words = []
 	#create counter variable
 	i = 0
+	n = 0
 	#while the variable is less than or equal to the string length, do the following operation
 	while i <= str.length do 
 		#for each character in the string, do the following
-		str.each do |n|
-			#if n is not a word
-			if !valid_word?(n)
+			#if charcter is not a word
+			if !valid_word?(str.slice(n,i))
 				#add one to the counter variable
 				i += 1
 				#and add the next character to n
-				n = ??
 				#if n is a word
 			elsif 
-				valid_word?(n)
+				valid_word?(str.slice(n,i))
 				#put n into the array
-				words << n
+				words << str.slice(n,i)
 				#then move on the the next character
-				n = ??
+				n = i+1
 			end
-		end
 	end
 	return words
 end
