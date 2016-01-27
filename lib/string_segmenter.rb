@@ -31,11 +31,11 @@ def segment_string(str)
 			last_letter += 1
 		elsif !valid_word?(str[first_letter..last_letter]) && words.join.length < str.length
 			puts "#{str[first_letter..last_letter]} is not a word and we're out of letters so lets go back to the beginning of the last word."
-			#I need to find a way to select the second to max value, i think i need to create a new method called second_to_max
 			#next line is me attempting to take the value of the previous last letter and add one to it
 			last_letter = word_index.max{|k ,v| v} +1
 			#next line is me attempting to delete the key/value pair with highest value
 			word_index.delete(word_index.max_by{|k,v| v})
+			#next  line is me attempting to take the value of the previous word's last letter and add 1
 			first_letter = word_index.max{|k,v| v} +1 
 		end
 	end
