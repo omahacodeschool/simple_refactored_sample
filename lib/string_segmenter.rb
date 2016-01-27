@@ -2,13 +2,14 @@ require_relative '../dictionary.rb'
 
 def segment_string(str)
 	#create array to store words
-	words = {}
+	words = []
 	#create counter variable
 	i = 0
+	n =
 	#while the variable is less than or equal to the string length, do the following operation
 	while i <= str.length do 
 		#for each character in the string, do the following
-		str.each do |n|
+		str.each do |x|
 			#if n is not a word
 		if !valid_word?(n)
 			#add one to the counter variable
