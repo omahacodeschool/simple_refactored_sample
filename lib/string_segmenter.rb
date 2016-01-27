@@ -2,40 +2,47 @@ require 'dictionary.rb'
 
 def segment_string(str)
 	puts "STARTING"
-
 	#create array to store words
 	words = []
-	#create counter variable
-	i = 0
-	n = 0
+	word_index = {}
+	#create counter variables
+	first_letter= 0
+	last_letter = 0
 	#while the variable is less than or equal to the string length, do the following operation
-	while i <= str.length do 
-		puts "i is currently #{i}"
-		puts "n is currently #{n}"
+	while last_letter <= str.length do 
+		puts "\n\n---------------------------------"
+		puts "first_letter is currently #{first_letter}"
+		puts "last_letter is currently #{last_letter}"
 		#for each character in the string, do the following
 		#if charcter is not a word
-		if !valid_word?(str.slice(n,i))
-			puts "#{str.slice(n,i)} is not a word, so incrementing i."
+		if !valid_word?(str[first_letter..last_letter])
+			puts "#{str[first_letter..last_letter]} is not a word, so incrementing last_letter."
 			#add one to the counter variable
-			i += 1
+			last_letter += 1
 			#if n is a word
-		elsif valid_word?(str.slice(n,i))
-			puts "#{str.slice(n,i)} IS a word! So adding it to 'words'."
+		elsif valid_word?(str[first_letter..last_letter])
+			puts "#{str[first_letter..last_letter]} IS a word! So adding it to 'words'."
 			#put n into the array
-			words << str.slice(n,i)
+			words << str[first_letter..last_letter]
+			word_index[str[first_letter..last_letter]] = last_letter			
 			puts "Okay, added it, and 'words' is now #{words}"
-
 			#then move on the the next character
-			n = i
-			i += 1
+			first_letter = last_letter + 1
+			last_letter += 1
 		end
 	end
+	#if there are dangling characters
+	#if words.join.length < str.length
+		#go back to 
+	#if there are no dangling characters
+	#if words.join.length == str.length
 	return words
 end
 
 
 
 
+#ORIGINAL CONCEPT
 
 #{}"catrun" 
 
