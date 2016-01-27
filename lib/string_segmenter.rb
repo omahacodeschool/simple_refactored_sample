@@ -1,11 +1,11 @@
-require 'dictionary'
+require_relative '../lib/dictionary.rb'
 
 def segment_string(str)
 	#"catrun" --------
 	puts "STARTING"
 	#create array to store words & hash to store the location of the word
 	words = []
-	word_index = {}
+	word_index = Hash.new(0)
 	#create counter variables
 	first_letter= 0
 	last_letter = 0
@@ -15,7 +15,15 @@ def segment_string(str)
 		puts "first_letter is currently #{first_letter}"
 		puts "last_letter is currently #{last_letter}"
 		#if charcter is not a word
-		if !valid_word?(str[first_letter..last_letter])
+		if !valid_word?(str[first_letter..last_letter]) && last_letter == str.length #words.join.length < str.length
+			puts "#{str[first_letter..last_letter]} is not a word and we're out of letters so lets go back to the beginning of the last word."
+			#next line is me attempting to take the value of the previous last letter and add one to it
+			last_letter = word_index.max{|k ,v| v} +1
+			#next line is me attempting to delete the key/value pair with highest value
+			word_index.delete(word_index.max_by{|k,v| v})
+			#next  line is me attempting to take the value of the previous word's last letter and add 1
+			first_letter = word_index.max{|k,v| v} +1 
+		elsif !valid_word?(str[first_letter..last_letter]) && last_letter < str.length
 			puts "#{str[first_letter..last_letter]} is not a word, so incrementing last_letter."
 			#add one to the counter variable
 			last_letter += 1
@@ -29,16 +37,6 @@ def segment_string(str)
 			#then move on to the next character
 			first_letter = last_letter + 1
 			last_letter += 1
-
-			#i think i need another or a different condition in this next line
-		elsif !valid_word?(str[first_letter..last_letter]) && last_letter = str.length #words.join.length < str.length
-			puts "#{str[first_letter..last_letter]} is not a word and we're out of letters so lets go back to the beginning of the last word."
-			#next line is me attempting to take the value of the previous last letter and add one to it
-			last_letter = word_index.max{|k ,v| v} +1
-			#next line is me attempting to delete the key/value pair with highest value
-			word_index.delete(word_index.max_by{|k,v| v})
-			#next  line is me attempting to take the value of the previous word's last letter and add 1
-			first_letter = word_index.max{|k,v| v} +1 
 		end
 	end
 	return words
