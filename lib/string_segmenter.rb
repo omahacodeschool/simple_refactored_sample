@@ -21,12 +21,17 @@ def segment_string(str)
 			last_letter = word_index.values.max + 1
 			puts "this is the #{last_letter}"
 			#delete word from array
-			words.delete(word_index.delete(word_index.max_by{|k,v| v}))
+			#words.delete(word_index.delete(word_index.max_by{|k,v| v}))
+			words.delete(word_index.key(word_index.values.max))
 			#next line is me attempting to delete the key/value pair with highest value
 			word_index.delete(word_index.max_by{|k,v| v}[0])
 			puts "here is my current hash #{word_index}"
 			#next  line is me attempting to take the value of the previous word's last letter and add 1
-			first_letter = word_index.values.max + 1 
+			if word_index.values.max == nil
+				first_letter = 0
+			else 
+				first_letter = word_index.values.max + 1 
+			end
 			puts "this is the #{first_letter}"
 		elsif !valid_word?(str[first_letter..last_letter])
 			puts "#{str[first_letter..last_letter]} is not a word, so incrementing last_letter."
