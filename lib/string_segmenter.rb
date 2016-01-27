@@ -21,6 +21,7 @@ def segment_string(str)
 				words << str.slice(n,i)
 				#then move on the the next character
 				n = i+1
+				i += 1
 			end
 	end
 	return words
