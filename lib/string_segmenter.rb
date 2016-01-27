@@ -1,4 +1,4 @@
-require 'dictionary.rb'
+require_relative '../dictionary.rb'
 
 def segment_string(str)
 	#"catrun" --------
@@ -20,7 +20,7 @@ def segment_string(str)
 			#add one to the counter variable
 			last_letter += 1
 			#if it is a word
-		else valid_word?(str[first_letter..last_letter])
+		elsif valid_word?(str[first_letter..last_letter])
 			puts "#{str[first_letter..last_letter]} IS a word! So adding it to 'words'."
 			#put word into the array and the word & index pair in a hash
 			words << str[first_letter..last_letter]
@@ -29,18 +29,19 @@ def segment_string(str)
 			#then move on to the next character
 			first_letter = last_letter + 1
 			last_letter += 1
-		else !valid_word?(str[first_letter..last_letter]) && words.join.length < str.length
+		elsif !valid_word?(str[first_letter..last_letter]) && words.join.length < str.length
 			puts "#{str[first_letter..last_letter]} is not a word and we're out of letters so lets go back to the beginning of the last word."
 			#I need to find a way to select the second to max value, i think i need to create a new method called second_to_max
-			first_letter = word_index.second-to-max{|k,v| v} +1 
 			#next line is me attempting to take the value of the previous last letter and add one to it
 			last_letter = word_index.max{|k ,v| v} +1
 			#next line is me attempting to delete the key/value pair with highest value
 			word_index.delete(word_index.max_by{|k,v| v})
+			first_letter = word_index.max{|k,v| v} +1 
 		end
 	end
 	return words
 end
+
 
 	
 
