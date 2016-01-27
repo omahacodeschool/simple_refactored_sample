@@ -5,26 +5,24 @@ def segment_string(str)
 	words = []
 	#create counter variable
 	i = 0
-
 	#while the variable is less than or equal to the string length, do the following operation
 	while i <= str.length do 
 		#for each character in the string, do the following
 		str.each do |n|
 			#if n is not a word
-		if !valid_word?(n)
-			#add one to the counter variable
-			i += 1
-			#and add the next character to n
-			n = ??
-
-
-			#if n is a word
-		elsif 
-			valid_word?(n)
-			#put n into the array
-			words << n
-			#then move on the the next character
-			n = ??
+			if !valid_word?(n)
+				#add one to the counter variable
+				i += 1
+				#and add the next character to n
+				n = ??
+				#if n is a word
+			elsif 
+				valid_word?(n)
+				#put n into the array
+				words << n
+				#then move on the the next character
+				n = ??
+			end
 		end
 	end
 	return words
