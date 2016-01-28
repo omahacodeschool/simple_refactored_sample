@@ -25,4 +25,5 @@ class StringSegmenterTest < Minitest::Test
 
   	assert_equal(["cat", "run"], segment_string(str))
   end
+  
 end
